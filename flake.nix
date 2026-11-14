@@ -41,8 +41,8 @@
           version = "0.3.1";
 
           src = pkgs.fetchzip {
-            url = "https://github.com/grapedjuice/ytm-rs/releases/download/v0.3.1/ytm-rs-0.3.1-linux-x86_64.tar.gz";
-            hash = "sha256-PGdFdrVtwx/aK+EdE+YLuJXNcu1z1sdkK290dTXfIsY=";
+            url = "https://github.com/grapedjuice/ytm-rs/releases/download/v0.3.3/ytm-rs-0.3.3-linux-x86_64.tar.gz";
+            hash = "sha256-AVR/ECfGr2EmOh5dN3QEcPNd1QPkZjMRi3tbsLlxKAE=";
           };
 
           nativeBuildInputs = with pkgs; [
