@@ -6,16 +6,14 @@
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs =
-    {
-      self,
-      nixpkgs,
-      flake-utils,
-    }:
-    flake-utils.lib.eachSystem [ "x86_64-linux" ] (
-      system:
-      let
-        pkgs = import nixpkgs { inherit system; };
+  outputs = {
+    self,
+    nixpkgs,
+    flake-utils,
+  }:
+    flake-utils.lib.eachSystem ["x86_64-linux"] (
+      system: let
+        pkgs = import nixpkgs {inherit system;};
 
         # Libraries the prebuilt binary links against (see `ldd ./ytm-rs`) plus the
         # tray appindicator, which is loaded at run time and so invisible to ldd.
@@ -101,7 +99,7 @@
             description = "Native YouTube Music client";
             homepage = "https://github.com/grapedjuice/ytm-rs";
             license = licenses.gpl3Only;
-            platforms = [ "x86_64-linux" ];
+            platforms = ["x86_64-linux"];
             mainProgram = "ytm-rs";
           };
         };
@@ -110,7 +108,8 @@
           type = "app";
           program = "${ytm-rs}/bin/ytm-rs";
           meta = {
-            inherit (ytm-rs.meta)
+            inherit
+              (ytm-rs.meta)
               description
               homepage
               license
@@ -119,8 +118,7 @@
               ;
           };
         };
-      in
-      {
+      in {
         packages.default = ytm-rs;
         packages.ytm-rs = ytm-rs;
 
@@ -128,7 +126,7 @@
         apps.ytm-rs = app;
 
         devShells.default = pkgs.mkShell {
-          buildInputs = runtimeLibs ++ (with pkgs; [ gdb ]);
+          buildInputs = runtimeLibs ++ (with pkgs; [gdb]);
         };
 
         formatter = pkgs.nixfmt;
