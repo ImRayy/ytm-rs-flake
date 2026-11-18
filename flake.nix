@@ -36,11 +36,11 @@
 
         ytm-rs = pkgs.stdenv.mkDerivation {
           pname = "ytm-rs";
-          version = "0.3.1";
+          version = "0.3.4";
 
           src = pkgs.fetchzip {
-            url = "https://github.com/grapedjuice/ytm-rs/releases/download/v0.3.3/ytm-rs-0.3.3-linux-x86_64.tar.gz";
-            hash = "sha256-AVR/ECfGr2EmOh5dN3QEcPNd1QPkZjMRi3tbsLlxKAE=";
+            url = "https://github.com/grapedjuice/ytm-rs/releases/download/v0.3.4/ytm-rs-portable-0.3.4-linux-x86_64.tar.gz";
+            hash = "sha256-AjKrNDZUcA1dCxh4zKOi1kRxT+E/ZEft24H5MTtHbig=";
           };
 
           nativeBuildInputs = with pkgs; [
