@@ -43,6 +43,12 @@
             hash = "sha256-AjKrNDZUcA1dCxh4zKOi1kRxT+E/ZEft24H5MTtHbig=";
           };
 
+          # The portable tarball ships no icon, so take it from the tagged source tree.
+          icon = pkgs.fetchurl {
+            url = "https://raw.githubusercontent.com/grapedjuice/ytm-rs/v0.3.4/assets/icon/icon.png";
+            hash = "sha256-IRg7VRlROrU8/WPCQHPY8BbcCd6/xiFTEZ06EdXOJys=";
+          };
+
           nativeBuildInputs = with pkgs; [
             autoPatchelfHook
             wrapGAppsHook3
@@ -60,7 +66,7 @@
             runHook preInstall
 
             install -Dm755 ytm-rs $out/bin/ytm-rs
-            install -Dm644 ytm-rs.png $out/share/icons/hicolor/256x256/apps/ytm-rs.png
+            install -Dm644 $icon $out/share/icons/hicolor/256x256/apps/ytm-rs.png
 
             runHook postInstall
           '';
